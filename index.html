@@ -8,12 +8,25 @@
 </head>
 <body>
     <h1>Title</h1>
-    <nav class="navbar">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </nav>
     
+    <!-- Hamburger menu button -->
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="menu">
+        <div class="menu-item">Home</div>
+        <div class="menu-item">About</div>
+        <div class="menu-item">Contact</div>
+    </div>
+
+    <script>
+    // Simple toggle for menu visibility
+    document.getElementById('hamburger-btn').onclick = function() {
+        document.querySelector('.menu').classList.toggle('open');
+    };
+    </script>
 </body>
 </html>
