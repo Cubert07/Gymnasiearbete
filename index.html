@@ -11,7 +11,18 @@
     <h1>Title</h1>
     
 
-
-    
+    <section class="hero">
+    <svg class="hero-wave" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C150,100 350,100 600,50 C850,0 1050,0 1200,50 L1200,120 L0,120 Z"
+        fill="#ffffff"></path>
+    </svg>
+    </section>
+    <style>
+        :root { --hero-height: 260px; }
+        .hero { background: linear-gradient(180deg,#06b6d4,#3b82f6); color: #fff; margin:0;}
+        .hero-inner { padding: 48px 20px; max-width: 900px; margin: 0 auto; height: var(--hero-height); display:flex; flex-direction:column; justify-content:center; align-items:center; }
+        .hero-wave { display:block; width:100%; height:200px; }
+    </style>
 </body>
 </html>
