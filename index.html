@@ -4,29 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="script" href="scripts/navbar.js">
     <title>Test</title>
 </head>
 <body>
     <h1>Title</h1>
     
-    <!-- Hamburger menu button -->
-    <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <div class="menu">
-        <div class="menu-item">Home</div>
-        <div class="menu-item">About</div>
-        <div class="menu-item">Contact</div>
-    </div>
-
-    <script>
-    // Simple toggle for menu visibility
-    document.getElementById('hamburger-btn').onclick = function() {
-        document.querySelector('.menu').classList.toggle('open');
-    };
-    </script>
+    
+    <div class="navbar">
+            <!-- Navbar for Home page -->
+            <button class="dropdown-toggle">☰ Menu</button>
+            <nav class="dropdown-menu">
+                <a href="location.html">Menyer & Boka Bord</a>
+                <a href="about.html">Om Oss</a>
+            </nav>
+        </div>
 </body>
 </html>
