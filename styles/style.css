@@ -2,4 +2,28 @@ body {
     background-color: aquamarine;
 }
 
+.wave {
+  --size: 50px;
+  --m: 1;
+  --p: calc(var(--m)*var(--size));
+  --R: calc(var(--size)*sqrt(var(--m)*var(--m) + 3));
 
+  mask:
+    radial-gradient(var(--R) at 50% calc(100% - (var(--size) + var(--p))), #000 99%, #0000 101%)
+      calc(50% - 2 * var(--size)) 0/calc(5 * var(--size)) 100%,
+    radial-gradient(var(--R) at 50% calc(100% + var(--p)), #0000 99%, #000 101%) 
+      50% calc(100% - var(--size)) / calc(0 * var(--size)) 100% repeat-x;
+  background: linear-gradient(90deg,red,blue);
+  height: 200px;
+
+  /* Animation */
+  animation: waveMove 0.1s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    -webkit-mask-position: 0 0, 0 0;
+    mask-position: 0 0, 0 0;
+  }
+
+}
