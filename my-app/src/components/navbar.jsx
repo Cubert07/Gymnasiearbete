@@ -33,6 +33,20 @@ export default function NavBar() {
             <Link to="/contact">Contact</Link>
           </Box>
         </Typography>
+        <Typography
+          variant="h6"
+          component={Link}
+          to="/"
+          sx={{
+            color: "inherit",
+            textDecoration: "none",
+            fontWeight: 700,
+            letterSpacing: 1,
+            flexGrow: 0,
+          }}
+        >
+          Moveable
+        </Typography>
       </Toolbar>
     </AppBar>
   );
