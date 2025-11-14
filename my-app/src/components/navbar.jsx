@@ -1,15 +1,12 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <AppBar position="static" >
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'inherit' }}>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
           <Box
             component="nav"
             sx={{
@@ -27,10 +24,10 @@ export default function NavBar() {
               },
             }}
           >
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/">Hem</Link>
+            <Link to="/shop">Butik</Link>
+            <Link to="/about">Om oss</Link>
+            <Link to="/contact">Kontakta oss</Link>
           </Box>
         </Typography>
         <Typography
@@ -45,7 +42,7 @@ export default function NavBar() {
             flexGrow: 0,
           }}
         >
-          Moveable
+          Moveable UF
         </Typography>
       </Toolbar>
     </AppBar>
