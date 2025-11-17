@@ -12,14 +12,13 @@ const theme = createTheme({
       fontWeight: 700,
       marginBottom: '1rem',
     },
-    
   },
 });
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider theme={createTheme}>
+    <ThemeProvider theme={theme}>
     <App />
     </ThemeProvider>
   </StrictMode>,
