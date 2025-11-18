@@ -6,14 +6,33 @@ import App from './App.jsx'
 import { createTheme, ThemeProvider } from '@mui/material'
 
 const theme = createTheme({
-  typography: {
-    h1: {
-      fontSize: '3rem',
-      fontWeight: 700,
-      marginBottom: '1rem',
+palette: {
+    type: 'light',
+    primary: {
+      main: '#ffecb3',
+      contrastText: '#000000',
+      light: '#fffde7',
+      dark: '#ffcc80',
+    },
+    secondary: {
+      main: '#66bb6a',
+      light: '#a5d6a7',
+      dark: '#2e7d32',
+      contrastText: '#ffffff',
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#fffbed',
     },
   },
-});
+  typography: {
+    h1: {
+      fontSize: '4rem',
+      fontWeight: 200,
+    },
+  },
+})
+
 
 
 createRoot(document.getElementById('root')).render(
