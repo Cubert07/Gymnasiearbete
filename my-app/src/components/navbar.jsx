@@ -1,25 +1,86 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Divider
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
+const drawerWidth = 240;
+
 export default function NavBar() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  const menuItems = [
+    { text: "Hem", path: "/" },
+    { text: "Butik", path: "/shop" },
+    { text: "Om oss", path: "/about" },
+    { text: "Kontakta oss", path: "/contact" },
+  ];
+
+  const drawer = (
+    <Box onClick={handleToggle} sx={{ textAlign: "center" }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        Moveable UF
+      </Typography>
+
+      <Divider />
+
+      <List>
+        {menuItems.map((item) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton
+              component={Link}
+              to={item.path}
+              sx={{ textAlign: "center" }}
+            >
+              <ListItemText primary={item.text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
-    <Box sx={{flexGrow: 1}}>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Link to="/">Hem</Link>
-            <Link to="/shop">Butik</Link>
-            <Link to="/about">Om oss</Link>
-            <Link to="/contact">Kontakta oss</Link>
-          </Box>
-        </Typography>
-        <Typography variant="h6" component="div">
-          Moveable UF
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+
+          <IconButton color="inherit" edge="start" onClick={handleToggle} sx={{ mr: 135}}>
+            <MenuIcon />
+          </IconButton>
+
+          <Typography variant="h6">
+            Moveable UF
+          </Typography>
+
+        </Toolbar>
+      </AppBar>
+
+      <Drawer
+        anchor="left"
+        open={open}
+        onClose={handleToggle}
+        sx={{
+          "& .MuiDrawer-paper": { width: drawerWidth, boxSizing: "border-box" }
+        }}
+      >
+        {drawer}
+      </Drawer>
     </Box>
   );
 }
