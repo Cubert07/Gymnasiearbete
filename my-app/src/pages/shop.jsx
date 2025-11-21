@@ -6,7 +6,6 @@ import { Container } from '@mui/system';
 export default function Shop() {
     return (
         <>
-        <NavBar />
         <Container>
         <h1>Welcome to the Shop Page</h1>
         <Product1 />

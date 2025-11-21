@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <AppBar position="static" >
-      <Toolbar pallette="secondary" sx={{ textDecoration: 'none' }}>
+    <Box sx={{flexGrow: 1}}>
+    <AppBar position="static">
+      <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Link to="/">Hem</Link>
@@ -19,5 +20,6 @@ export default function NavBar() {
         </Typography>
       </Toolbar>
     </AppBar>
+    </Box>
   );
 }

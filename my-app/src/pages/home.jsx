@@ -1,16 +1,14 @@
 import NavBar from '../components/navbar';
 
-import { Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export default function Home() {
     return (
         <>
-        <NavBar />
-        <Container>
+        <Box sx={{ p:4 }} component="main">
             <Typography variant="h1">
-                Välkommen till Moveable UF
             </Typography>
-        </Container>
+        </Box>
         </>
     );
 }
