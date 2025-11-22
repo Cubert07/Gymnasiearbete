@@ -1,4 +1,3 @@
-import NavBar from "../components/navbar";
 import Product1 from "../products/product1";
 
 import { Container } from '@mui/system';
