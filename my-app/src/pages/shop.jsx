@@ -1,7 +1,7 @@
 import Product1 from "../products/product1";
 import Product2 from "../products/product2";
 
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 
 export default function Shop() {
     return (
