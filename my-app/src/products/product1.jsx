@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box } from '@mui/material';
 
 export default function Product1() {
     return (
