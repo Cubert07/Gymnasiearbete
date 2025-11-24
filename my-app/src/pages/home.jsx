@@ -31,13 +31,27 @@ export default function Home() {
                     </Typography>
                 </Box>
             </Box>
-                
-            <Grid container spacing={3} sx={{ padding: '5vw', pl: '8vw', pr: '8vw' , alignContent: 'center', justifyContent: 'center' }}>
+            <Typography variant="h3" sx={{ textAlign: 'center', pt: 5, pb: 2,  }}>
+                Våra huvudprodukter
+            </Typography>
+            <Box sx={{
+                 display: "grid",
+                 gridTemplateColumns: { 
+                    xs: "1fr",
+                    sm: "1fr 1fr",
+                    md: "1fr 1fr 1fr" 
+                 },
+                 gap: 10,
+                    p: 5, 
+            }}>
+            {/* <Box sx={{ maxHeight: '30vh', height: '30vh' }}> */}
+            {/* <Grid container spacing={3} sx={{ padding: '5vw', pl: '8vw', pr: '8vw' , alignContent: 'center', justifyContent: 'center' }}> */}
             {/* Products section */}
                 <Product1 />
                 <Product2 />
                 <Product3 />
-            </Grid>
+            {/* </Grid> */}
+            </Box>
 
 
         </Box>
