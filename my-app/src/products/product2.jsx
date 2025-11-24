@@ -28,4 +28,3 @@ export default function Product2() {
         </Box>
     );
 }
-import { Box } from '@mui/material';
