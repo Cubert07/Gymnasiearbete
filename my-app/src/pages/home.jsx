@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Autocomplete } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 
 import Product1 from '../products/product1';
 import Product2 from '../products/product2';
