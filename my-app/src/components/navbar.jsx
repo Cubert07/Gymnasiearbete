@@ -1,4 +1,18 @@
-import { AppBar, Toolbar, Typography, Box } from "@mui/material";
+import React from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Divider
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -43,22 +57,28 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#f5f5f5"}}>
+      <AppBar position="static" sx={{ background: "#f5f5f5", color: "black" }}>
         <Toolbar>
 
-          <IconButton color="inherit" edge="start" onClick={handleToggle}>
+          {/* HAMBURGER - ALLTID SYNLIG */}
+          <IconButton color="inherit" edge="start" onClick={handleToggle} sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
 
+          {/* LOGGA / TITEL */}
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Moveable UF
+          </Typography>
         </Toolbar>
       </AppBar>
 
+      {/* DRAWER MENYN */}
       <Drawer
         anchor="left"
         open={open}
         onClose={handleToggle}
         sx={{
-          "& .MuiDrawer-paper": { width: { xs: "100%", sm: drawerWidth}, boxSizing: "border-box" }
+          "& .MuiDrawer-paper": { width: { xs: "100%", sm: drawerWidth }, boxSizing: "border-box" }
         }}
       >
         {drawer}
