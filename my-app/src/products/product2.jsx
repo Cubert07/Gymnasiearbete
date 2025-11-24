@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 
-export default function Product1() {
+export default function Product2() {
     return (
         <Box
             sx={{
@@ -15,12 +15,12 @@ export default function Product1() {
             <img
                 src="../public/image0.jpeg"
                 alt="placeholder for product1"
-                style={{ width: "100%", height: "auto", borderRadius: "8px" }}
+                style={{ width: "100%", height: "auto", borderRadius: "8px", rotate: "180deg" }}
             />
 
-            <h2>Produkt 1</h2>
+            <h2>Produkt 2</h2>
             <p>Mycket bra produkt, väldigt fin.</p>
-            <p>299 kr</p>
+            <p>499 kr</p>
 
             <Button variant="contained" color="secondary" href="contact">
                 Läs mer

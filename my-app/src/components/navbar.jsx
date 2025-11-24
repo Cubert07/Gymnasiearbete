@@ -57,16 +57,12 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "#f5f5f5"}}>
         <Toolbar>
 
-          <IconButton color="inherit" edge="start" onClick={handleToggle} sx={{ mr: 135}}>
+          <IconButton color="inherit" edge="start" onClick={handleToggle}>
             <MenuIcon />
           </IconButton>
-
-          <Typography variant="h6">
-            Moveable UF
-          </Typography>
 
         </Toolbar>
       </AppBar>
@@ -76,7 +72,7 @@ export default function NavBar() {
         open={open}
         onClose={handleToggle}
         sx={{
-          "& .MuiDrawer-paper": { width: drawerWidth, boxSizing: "border-box" }
+          "& .MuiDrawer-paper": { width: { xs: "100%", sm: drawerWidth}, boxSizing: "border-box" }
         }}
       >
         {drawer}
