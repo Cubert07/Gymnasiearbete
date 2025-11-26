@@ -1,8 +1,8 @@
 import { Box, Typography, Grid } from '@mui/material';
+import products from "../products/products.json";
+import Product from "../products/product.jsx";
 
-import Product1 from '../products/product1';
-import Product2 from '../products/product2';
-import Product3 from '../products/product3';
+const topThree = Object.values(products).sort((a, b) => b.popularity - a.popularity).slice(0, 3);
 
 export default function Home() {
     return (
@@ -47,9 +47,17 @@ export default function Home() {
             {/* <Box sx={{ maxHeight: '30vh', height: '30vh' }}> */}
             {/* <Grid container spacing={3} sx={{ padding: '5vw', pl: '8vw', pr: '8vw' , alignContent: 'center', justifyContent: 'center' }}> */}
             {/* Products section */}
-                <Product1 />
-                <Product2 />
-                <Product3 />
+                {topThree.map((product) => (
+                <Product
+                    key={product.title}
+                    title={product.title}
+                    description={product.description}
+                    price={product.price}
+                    image={product.image}
+                    altText={product.altText}
+                    productLink={product.productLink}
+                />
+            ))}
             {/* </Grid> */}
             </Box>
 

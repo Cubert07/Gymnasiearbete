@@ -5,6 +5,7 @@ import Shop from "./pages/shop";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import NavBar from "./components/navbar";
+import ProductPage1 from "./pages/productPage1";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/productPage1" element={<ProductPage1 />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </Router>

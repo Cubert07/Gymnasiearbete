@@ -1,8 +1,22 @@
-import Product1 from "../products/product1";
-import Product2 from "../products/product2";
-import Product3 from "../products/product3";
+import products from "../products/products.json";
+import Product from "../products/product.jsx";
 
 import { Box } from '@mui/material';
+
+const rows = [];
+
+for (const key in products) {
+    rows.push(
+    <Product
+        title={products[key].title}
+        description={products[key].description}
+        price={products[key].price}
+        image={products[key].image}
+        altText={products[key].altText}
+        productLink={products[key].productLink}
+    />
+    )
+}
 
 export default function Shop() {
     return (
@@ -25,12 +39,7 @@ export default function Shop() {
                  gap: 2 
             }}
         >
-            <Product1 />
-            <Product2 />
-            <Product3 />
-            <Product1 />
-            <Product1 />
-            <Product1 />
+            {rows}
         </Box>
         </>
     );

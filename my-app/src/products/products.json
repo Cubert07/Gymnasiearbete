@@ -1,0 +1,62 @@
+{
+"Produkt 1": {
+    "title": "Produkt 1",
+    "price": 299,
+    "description": "Mycket bra produkt, väldigt fin",
+    "detailedDescription": "Detta är en mycket bra produkt som är väldigt fin och användbar för många olika ändamål. Den är tillverkad av högkvalitativa material och har genomgått rigorösa tester för att säkerställa dess hållbarhet och prestanda. Oavsett om du behöver den för vardagligt bruk eller speciella tillfällen, kommer denna produkt att leverera utmärkt resultat varje gång.",
+    "image": "../public/image0.jpeg",
+    "altText": "Bild på produkt 1",
+    "productLink": "productPage1",
+    "popularity": 50
+  },
+
+"Produkt 2": {
+    "title": "Produkt 2",
+    "price": 599,
+    "description": "En ännu bättre produkt, otroligt fin",
+    "image": "../public/image0.jpeg",
+    "altText": "Bild på produkt 2",
+    "productLink": "contact",
+    "popularity": 75
+  },
+
+"Produkt 3": {
+    "title": "Produkt 3",
+    "price": 999,
+    "description": "Den bästa produkten av dem alla, superfin",
+    "image": "../public/image0.jpeg",
+    "altText": "Bild på produkt 3",
+    "productLink": "contact",
+    "popularity": 100
+  },
+
+"Produkt 4": {
+    "title": "Produkt 4",
+    "price": 199,
+    "description": "En billig produkt, helt okej kvalitet",
+    "image": "../public/image0.jpeg",
+    "altText": "Bild på produkt 4",
+    "productLink": "contact",
+    "popularity": 25
+  },
+
+"Produkt 5": {
+    "title": "Produkt 5",
+    "price": 399,
+    "description": "En mellanklassprodukt, bra kvalitet för priset",
+    "image": "../public/image0.jpeg",
+    "altText": "Bild på produkt 5",
+    "productLink": "contact",
+    "popularity": 60
+  },
+
+"Produkt 6": {
+    "title": "Produkt 6",
+    "price": 799,
+    "description": "En premiumprodukt, högsta kvalitet",
+    "image": "../public/image0.jpeg",
+    "altText": "Bild på produkt 6",
+    "productLink": "contact",
+    "popularity": 90
+  }
+}
