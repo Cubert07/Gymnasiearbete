@@ -2,6 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import ExtensionOutlinedIcon from '@mui/icons-material/ExtensionOutlined';
 
+
 export default function ProductPage({ title, detailedDescription, description, price, image, altText }) {
     return (
         <Box sx={{ p: 5, gap: 3, display: "flex", flexDirection: "column" }}>

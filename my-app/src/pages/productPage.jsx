@@ -1,11 +1,11 @@
-import { Box } from "@mui/material";
+import { Box } from "@mui/material"; 
 
 import products from "../products/products.json";
 import ProductPage from "../products/productPage.jsx";
 
 
 
-export default function ProductPage1() {
+export default function ProductPage1(value) {
     return (
         <>
             <Box

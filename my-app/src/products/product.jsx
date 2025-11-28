@@ -1,6 +1,15 @@
 import { Box, Button } from '@mui/material';
 
+import ProductPage1 from '../pages/productPage';
+
 export default function Product({ title, description, price, image, altText, productLink }) {
+    
+    const handleClick = (temp) => {
+
+        <ProductPage1 value={temp} />
+
+    }
+
     return (
         <Box
             sx={{
@@ -22,7 +31,7 @@ export default function Product({ title, description, price, image, altText, pro
             <p>{description}</p>
             <p>{price} kr</p>
 
-            <Button variant="contained" color="secondary" href={productLink}>
+            <Button variant="contained" color="secondary" href={productLink} onClick={() => handleClick(title)}>
                 Läs mer
             </Button>
         </Box>

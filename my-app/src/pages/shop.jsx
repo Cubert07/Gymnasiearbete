@@ -1,6 +1,7 @@
 import products from "../products/products.json";
 import Product from "../products/product.jsx";
 
+
 import { Box } from '@mui/material';
 
 const rows = [];
