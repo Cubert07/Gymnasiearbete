@@ -1,6 +1,7 @@
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, Button, Stack } from '@mui/material';
 import products from "../products/products.json";
 import Product from "../products/product.jsx";
+import { Link } from "react-router-dom";
 
 const topThree = Object.values(products).sort((a, b) => b.popularity - a.popularity).slice(0, 3);
 
@@ -9,7 +10,7 @@ export default function Home() {
         <>
         <Box>
             {/* Page container */}
-            <Box sx={{ backgroundImage: "url('https://placehold.co/1920x400')", height: '400px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
+            <Box sx={{ backgroundImage: "url('https://placehold.co/1920x500')", height: '500px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
                 }}>
 
                     {/* Hero section */}
@@ -29,6 +30,38 @@ export default function Home() {
                             Joysticks som ger frihet att röra sig.
                         </p>
                     </Typography>
+
+                                <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
+                                    <Button
+                                        component={Link}
+                                        to="/shop"
+                                        variant="contained"
+                                        color="secondary"
+                                        sx={{
+                                            px: 3,
+                                            py: 1.2,
+                                            textTransform: 'none',
+                                            borderRadius: 2,
+                                            boxShadow: 2,
+                                            fontWeight: 600,
+                                            '&:hover': { transform: 'translateY(-2px)', boxShadow: 4 },
+                                        }}
+                                    >
+                                        Utforska våra joysticks
+                                    </Button>
+
+                                    <Button
+                                        component={Link}
+                                        to="/contact"
+                                        variant="outlined"
+                                        color="secondary"
+                                        sx={{ px: 3, py: 1.2, textTransform: 'none', borderRadius: 2 }}
+                                    >
+                                        Kontakta oss
+                                    </Button>
+                                </Stack>
+                    
+
                 </Box>
             </Box>
             <Typography variant="h3" sx={{ textAlign: 'center', pt: 5, pb: 2,  }}>

@@ -38,7 +38,7 @@ export default function NavBar() {
       </Typography>
 
       <Divider />
-
+      
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
