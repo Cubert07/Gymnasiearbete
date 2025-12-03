@@ -1,9 +1,5 @@
 import { Box, Typography, Grid, Button, Stack } from '@mui/material';
-import products from "../products/products.json";
-import Product from "../products/product.jsx";
 import { Link } from "react-router-dom";
-
-const topThree = Object.values(products).sort((a, b) => b.popularity - a.popularity).slice(0, 3);
 
 export default function Home() {
     return (
@@ -77,20 +73,7 @@ export default function Home() {
                  gap: 10,
                     p: 5, 
             }}>
-            {/* <Box sx={{ maxHeight: '30vh', height: '30vh' }}> */}
-            {/* <Grid container spacing={3} sx={{ padding: '5vw', pl: '8vw', pr: '8vw' , alignContent: 'center', justifyContent: 'center' }}> */}
-            {/* Products section */}
-                {topThree.map((product) => (
-                <Product
-                    key={product.title}
-                    title={product.title}
-                    description={product.description}
-                    price={product.price}
-                    image={product.image}
-                    altText={product.altText}
-                    productLink={product.productLink}
-                />
-            ))}
+
             {/* </Grid> */}
             </Box>
 

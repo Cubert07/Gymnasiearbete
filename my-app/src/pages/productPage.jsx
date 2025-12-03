@@ -1,27 +1,31 @@
-import { Box } from "@mui/material"; 
+import { Box } from "@mui/material";
+import { Data } from "../products/products";
 
-import products from "../products/products.json";
-import ProductPage from "../products/productPage.jsx";
+export default function ProductPage() {
+  return (
+    <>
+        {Data.map((product) => (
+            <>
+            <ul style={{ margin: "10px", padding: "20px", paddingTop: "5px", border: "solid black", borderRadius: "10px"}}>
 
+                <h3>{product.title}</h3>
 
+                <img src={product.image} style={{width: "100%", height: "auto", borderRadius: "10px"}}/>
 
-export default function ProductPage1(value) {
-    return (
-        <>
-            <Box
-                sx={{
-                    backgroundColor: "#f5f5f5",
-                }}
-            >
-                <ProductPage
-                    title={products["Produkt 1"].title}
-                    detailedDescription={products["Produkt 1"].detailedDescription}
-                    price={products["Produkt 1"].price}
-                    image={products["Produkt 1"].image}
-                    altText={products["Produkt 1"].altText}
-                    description={products["Produkt 1"].description}
-                />
-            </Box>
-        </>
-    );
+                <b><p>{ product.price } kr</p></b>
+
+                <p>{ product.description }</p>
+
+                <button>
+                    Läs Mer
+                </button>
+            </ul>
+            </>
+        
+    )
+    )}
+
+      
+    </>
+  );
 }
