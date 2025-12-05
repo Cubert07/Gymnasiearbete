@@ -57,7 +57,7 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: "#f5f5f5", color: "black" }}>
+      <AppBar sx={{ background: "#f5f5f5", color: "black" }}>
         <Toolbar>
 
           {/* HAMBURGER - ALLTID SYNLIG */}
