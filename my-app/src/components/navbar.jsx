@@ -67,7 +67,6 @@ export default function NavBar() {
 
           {/* LOGGA / TITEL */}
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Moveable UF
           </Typography>
           <Box component='img' sx={{ height: 50, pt: 1}} src="../public/loggaUF.png" alt="Logo" />
         </Toolbar>

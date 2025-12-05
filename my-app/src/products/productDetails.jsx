@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Data from "products"
+import { Data } from "./products"
 
 
 

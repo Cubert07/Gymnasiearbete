@@ -1,11 +1,14 @@
 import { Box } from "@mui/material";
 import { Data } from "../products/products";
+import { useNavigate } from "react-router-dom";
+import ProductPage from '../pages/productPage';
 
 export default function Product() {
   return (
     <>
-        {Data.map((product) => (
+        {Data.map((product, index) => (
             <>
+            
             <ul style={{ margin: "10px", padding: "20px", paddingTop: "5px", border: "solid black", borderRadius: "10px"}}>
 
                 <h3>{product.title}</h3>
@@ -16,7 +19,7 @@ export default function Product() {
 
                 <p>{ product.description }</p>
 
-                <button>
+                <button onClick={() => window.location.href = `/products/${index}`}>
                     Läs Mer
                 </button>
             </ul>

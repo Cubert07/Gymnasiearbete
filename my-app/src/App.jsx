@@ -5,7 +5,7 @@ import Shop from "./pages/shop";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import NavBar from "./components/navbar";
-import ProductDetails from "./pages/productPage";
+import ProductPage from "./pages/productPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/products" element={<ProductDetails />} />
+        <Route path="/products/:index" element={<ProductPage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </Router>

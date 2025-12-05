@@ -1,6 +1,8 @@
 import { Box, Typography, Grid, Button, Stack } from '@mui/material';
 import { Link } from "react-router-dom";
 import { Data } from '../products/products';
+import { useNavigate } from "react-router-dom";
+import ProductPage from '../pages/productPage';
 
 export default function Home() {
     return (
@@ -92,7 +94,7 @@ export default function Home() {
                         }}
                     >
                 
-                {Data.slice(0, 3).map((product) => (
+                {Data.slice(0, 3).map((product, index) => (
                 <>
                 <ul style={{ margin: "10px", padding: "20px", paddingTop: "5px", border: "solid black", borderRadius: "10px"}}>
 
@@ -104,9 +106,9 @@ export default function Home() {
 
                     <p>{ product.description }</p>
 
-                    <button>
-                        Läs Mer
-                    </button>
+                    <button onClick={() => window.location.href = `/products/${index}`}>
+                    Läs Mer
+                </button>
                 </ul>
                 </>
             ))}
