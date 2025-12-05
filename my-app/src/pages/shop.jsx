@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import ProductPage from '../pages/productPage';
+import Product from '../components/product';
 
 
 
@@ -24,7 +24,7 @@ export default function Shop() {
                  gap: 2 
             }}
         >
-            <ProductPage />
+            <Product />
         </Box>
         </>
     );
