@@ -1,10 +1,11 @@
 import { Button } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./components/navbar";
+import Footer from "./components/footer";
 import Home from "./pages/home";
 import Shop from "./pages/shop";
 import About from "./pages/about";
 import Contact from "./pages/contact";
-import NavBar from "./components/navbar";
 import ProductPage from "./pages/productPage";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/products/:index" element={<ProductPage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
