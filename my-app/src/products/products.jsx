@@ -1,5 +1,6 @@
-{
-"Produkt 1": {
+export const Data = [
+  {
+    "id": "1",
     "title": "Produkt 1",
     "price": 299,
     "description": "Mycket bra produkt, väldigt fin",
@@ -10,7 +11,8 @@
     "popularity": 50
   },
 
-"Produkt 2": {
+{
+    "id": "2",
     "title": "Produkt 2",
     "price": 599,
     "description": "En ännu bättre produkt, otroligt fin",
@@ -21,7 +23,8 @@
     "popularity": 75
   },
 
-"Produkt 3": {
+{
+    "id": "3",
     "title": "Produkt 3",
     "price": 999,
     "description": "Den bästa produkten av dem alla, superfin",
@@ -32,7 +35,8 @@
     "popularity": 100
   },
 
-"Produkt 4": {
+{
+    "id": "4",
     "title": "Produkt 4",
     "price": 199,
     "description": "En billig produkt, helt okej kvalitet",
@@ -43,7 +47,8 @@
     "popularity": 25
   },
 
-"Produkt 5": {
+{
+    "id": "5",
     "title": "Produkt 5",
     "price": 399,
     "description": "En mellanklassprodukt, bra kvalitet för priset",
@@ -54,7 +59,8 @@
     "popularity": 60
   },
 
-"Produkt 6": {
+{
+    "id": "6",
     "title": "Produkt 6",
     "price": 799,
     "description": "En premiumprodukt, högsta kvalitet",
@@ -63,5 +69,6 @@
     "altText": "Bild på produkt 6",
     "productLink": "contact",
     "popularity": 90
-  }
-}
+  },
+
+];

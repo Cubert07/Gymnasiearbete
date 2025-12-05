@@ -1,0 +1,30 @@
+import { Box } from "@mui/material";
+import { Data } from "../products/products";
+
+export default function Product() {
+  return (
+    <>
+        {Data.map((product) => (
+            <>
+            <ul style={{ margin: "10px", padding: "20px", paddingTop: "5px", border: "solid black", borderRadius: "10px"}}>
+
+                <h3>{product.title}</h3>
+
+                <img src={product.image} style={{width: "100%", height: "auto", borderRadius: "10px"}}/>
+
+                <b><p>{ product.price } kr</p></b>
+
+                <p>{ product.description }</p>
+
+                <button>
+                    Läs Mer
+                </button>
+            </ul>
+            </>
+        
+    )
+    )}
+
+    </>
+  );
+}
