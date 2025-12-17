@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Button, Stack, Card } from '@mui/material';
+import { Box, Typography, Grid, Button, Stack, Card, CardMedia } from '@mui/material';
 import { Data } from "../products/products";
 import { useNavigate } from "react-router-dom";
 import ProductPage from '../pages/productPage';
@@ -14,8 +14,12 @@ export default function Product() {
               <Typography variant='h4' sx={{fontWeight: 'bold'}}>
               {product.title}
               </Typography>
-
-              <img src={product.image} style={{width: "100%", height: "auto", borderRadius: "10px"}}/>
+              <CardMedia
+                component="img"
+                image={product.image}
+                alt={product.title}
+                sx={{ width: "100%", height: "auto", borderRadius: "10px" }}
+              />
 
               <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '10px' }}>
               { product.price } kr
