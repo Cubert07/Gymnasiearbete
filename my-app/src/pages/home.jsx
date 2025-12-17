@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Button, Stack } from '@mui/material';
+import { Box, Typography, Grid, Button, Stack, Card, Divider } from '@mui/material';
 import { Link } from "react-router-dom";
 import { Data } from '../products/products';
 import { useNavigate } from "react-router-dom";
@@ -18,16 +18,17 @@ export default function Home() {
 
                     {/* Inside of hero */}
 
-                    <Typography variant="h1">
-                        <h5 style={{ paddingBottom: '0 vh' }}>
+                    <Typography variant="h1" sx={{pt: '2vh', fontWeight: 'bold'}}>
+                      
                             Full kontroll.
                             <br />
                             Högsta trygghet.
-                        </h5>
+                 
                         
-                        <p style={{ fontSize: '5vh' }}>
+                    </Typography>
+
+                    <Typography variant='h5' sx={{ pt: 3 }}>
                             Joysticks som ger frihet att röra sig.
-                        </p>
                     </Typography>
 
                                 <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
@@ -81,40 +82,46 @@ export default function Home() {
             </Box>
             
             <Box 
-                        sx={{
-                             textAlign: "center", 
-                             p: 2,  
-                             display: "grid",
-                             gridTemplateColumns: { 
-                                xs: "1fr",
-                                sm: "1fr 1fr",
-                                md: "1fr 1fr 1fr" 
-                             },
-                             gap: 2 
-                        }}
+                sx={{
+                    p: 2,  
+                    textAlign: "center", 
+                    display: "grid",
+                    gridTemplateColumns: { 
+                       xs: "1fr",
+                       sm: "1fr 1fr",
+                       md: "1fr 1fr 1fr" 
+                    },
+                    gap: 2 
+                }}
                     >
                 
                 {Data.slice(0, 3).map((product, index) => (
                 <>
-                <ul style={{ margin: "10px", padding: "20px", paddingTop: "5px", border: "solid black", borderRadius: "10px"}}>
+          <Card sx={{ p: 2, boxShadow: 3, borderRadius: 2, backgroundColor: "#fff" }}>
+            <Box sx={{m: '10px', p: '20px', pt: '5px'}}>
+              <Typography variant='h4' sx={{fontWeight: 'bold'}}>
+              {product.title}
+              </Typography>
 
-                    <h3>{product.title}</h3>
+              <img src={product.image} style={{width: "100%", height: "auto", borderRadius: "10px"}}/>
 
-                    <img src={product.image} style={{width: "100%", height: "auto", borderRadius: "10px"}}/>
+              <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '10px' }}>
+              { product.price } kr
+              </Typography>
 
-                    <b><p>{ product.price } kr</p></b>
+              <Typography variant="body2" sx={{ paddingTop: '10px', paddingBottom: '10px' }}>
+              { product.description }
+              </Typography>
 
-                    <p>{ product.description }</p>
-
-                    <button onClick={() => window.location.href = `/products/${index}`}>
-                    Läs Mer
-                </button>
-                </ul>
+              <Button variant="contained" color="secondary" href={`/products/${index}`}>
+                      Läs Mer
+              </Button>  
+            </Box>
+          </Card>
                 </>
             ))}
-        </ Box>
-
         </Box>
-        </>
+       </Box>
+      </>
     );
 }

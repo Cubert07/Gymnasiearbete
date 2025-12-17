@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
@@ -11,6 +11,7 @@ import ProductPage from "./pages/productPage";
 function App() {
   return (
     <Router>
+      <Box sx={{ mt: '10vh' }}>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +22,7 @@ function App() {
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Footer />
+      </Box>
     </Router>
   );
 }
