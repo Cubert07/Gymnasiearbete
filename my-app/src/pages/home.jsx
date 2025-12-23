@@ -111,7 +111,7 @@ export default function Home() {
               { product.description }
               </Typography>
 
-              <Button variant="contained" color="secondary" href={`/products/${index}`}>
+              <Button variant="contained" color="secondary" href={`/product/${index}`}>
                       Läs Mer
               </Button>  
             </Box>

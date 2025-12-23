@@ -90,8 +90,10 @@ export default function NavBar() {
         {drawer}
       </Drawer>
       
-        {/* Bild för loga */}
-        <Box component='img' sx={{ height: 50, pt: 1, mt: "5px", mr: 1 }} src="/loggaUF.png" alt="Logo" />
+        {/* Bild för loga (klickbar till startsidan) */}
+        <Box component={Link} to="/" aria-label="Gå till startsidan" sx={{ display: "inline-flex" }}>
+          <Box component='img' sx={{ height: 50, pt: 1, mt: "5px", mr: 1 }} src="/loggaUF.png" alt="Moveable UF logotyp" />
+        </Box>
         </Stack>
       </Box>
 
@@ -99,7 +101,9 @@ export default function NavBar() {
       {/* Visas på störe skärm */}
       <Box sx={{ display: { xs: "none", sm: "block" }, width: "100%" }}>
         <Stack direction={"row"} sx={{ alignItems: "center", justifyContent: "space-between", px: 2 }}>
-          <Box component='img' sx={{ height: 60, pt: 1, mt: "5px" }} src="/loggaUF.png" alt="Logo" />
+          <Box component={Link} to="/" aria-label="Gå till startsidan" sx={{ display: "inline-flex" }}>
+            <Box component='img' sx={{ height: 60, pt: 1, mt: "5px", cursor: "pointer" }} src="/loggaUF.png" alt="Moveable UF logotyp" />
+          </Box>
 
           {/* Center area: takes remaining space and centers buttons within it */}
           <Box sx={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", gap: 1, whiteSpace: "nowrap", overflowX: "auto" }}>
