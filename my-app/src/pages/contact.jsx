@@ -55,7 +55,7 @@ export default function Contact() {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">Telefon: <strong>012-345 67 89</strong></Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-                        Adress: Moveable UF<br />Orholmsgatan 4<br />652 15 Karlstad
+                        Adress: Moveable UF<br />Orrholmsgatan 4<br />652 15 Karlstad
                     </Typography>
                 </Grid>
             </Grid>
