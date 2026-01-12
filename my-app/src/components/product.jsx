@@ -10,6 +10,7 @@ export default function Product({ items }) {
       {list.map((product) => {
         const index = Data.findIndex((p) => p.id === product.id);
         return (
+
           <Card key={product.id} sx={{ p: 2, boxShadow: 3, borderRadius: 2, backgroundColor: "#fff" }}>
             <Box sx={{ m: '10px', p: '20px', pt: '5px' }}>
 
@@ -19,7 +20,7 @@ export default function Product({ items }) {
                 image={product.image}
                 alt={product.title}
                 sx={{ width: "100%", height: "auto", borderRadius: "10px" }}
-              />
+                />
 
               <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '10px' }}>{product.price} kr</Typography>
 
