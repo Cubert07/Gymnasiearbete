@@ -1,30 +1,38 @@
-import { Box } from "@mui/material";
+import { Box, Typography, Grid, Button, Stack, Card, CardMedia } from '@mui/material';
 import { Data } from "../products/products";
+import ProductPage from '../pages/productPage';
 
-export default function Product() {
+export default function Product({ items }) {
+  const list = items || Data;
+
   return (
     <>
-        {Data.map((product) => (
-            <>
-            <ul style={{ margin: "10px", padding: "20px", paddingTop: "5px", border: "solid black", borderRadius: "10px"}}>
+      {list.map((product) => {
+        const index = Data.findIndex((p) => p.id === product.id);
+        return (
+          <Card key={product.id} sx={{ p: 2, boxShadow: 3, borderRadius: 2, backgroundColor: "#fff" }}>
+            <Box sx={{ m: '10px', p: '20px', pt: '5px' }}>
 
-                <h3>{product.title}</h3>
+              <Typography variant='h4' sx={{ fontWeight: 'bold' }}>{product.title}</Typography>
+              <CardMedia
+                component="img"
+                image={product.image}
+                alt={product.title}
+                sx={{ width: "100%", height: "auto", borderRadius: "10px" }}
+              />
 
-                <img src={product.image} style={{width: "100%", height: "auto", borderRadius: "10px"}}/>
+              <Typography variant="body1" sx={{ fontWeight: 'bold', paddingTop: '10px' }}>{product.price} kr</Typography>
 
-                <b><p>{ product.price } kr</p></b>
+              <Typography variant="body2" sx={{ paddingTop: '10px', paddingBottom: '10px' }}>{product.description}</Typography>
 
-                <p>{ product.description }</p>
+              <Button variant="contained" color="secondary" href={`/product/${index}`}>
+                Läs Mer
+              </Button>
 
-                <button>
-                    Läs Mer
-                </button>
-            </ul>
-            </>
-        
-    )
-    )}
-
+            </Box>
+          </Card>
+        );
+      })}
     </>
   );
 }

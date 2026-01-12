@@ -10,15 +10,18 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Divider
+  Divider,
+  Stack,
+  Button
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 
 export default function NavBar() {
   const [open, setOpen] = React.useState(false);
+  const location = useLocation();
 
   const handleToggle = () => {
     setOpen(!open);
@@ -37,43 +40,45 @@ export default function NavBar() {
         Moveable UF
       </Typography>
 
+
+
       <Divider />
       
       <List>
-        {menuItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton
-              component={Link}
-              to={item.path}
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {menuItems.map((item) => {
+          const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+          return (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton
+                component={Link}
+                to={item.path}
+                sx={{ textAlign: "center", borderBottom: isActive ? "3px solid black" : "3px solid transparent" }}
+              >
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: "#f5f5f5", color: "black" }}>
-        <Toolbar>
+      <AppBar sx={{ background: "#f5f5f5", color: "black" }}>
+        <Toolbar sx={{ px: { xs: 3, sm: 3 }, py: { xs: 0, sm: 0} }}>
 
-          {/* HAMBURGER - ALLTID SYNLIG */}
-          <IconButton color="inherit" edge="start" onClick={handleToggle} sx={{ mr: 2 }}>
+      {/* Visas på mindre skärm */}
+        <Box  sx={{ display: { xs: "block", sm: "none" }, width: "100%" }}>
+
+        <Stack direction={"row"} sx={{ width: "100%", justifyContent: "space-between", alignItems: "center" }}>
+
+        {/* HAMBURGER - ALLTID SYNLIG */}
+          <IconButton color="inherit" edge="start" onClick={handleToggle}>
             <MenuIcon />
           </IconButton>
 
-          {/* LOGGA / TITEL */}
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Moveable UF
-          </Typography>
-          <Box component='img' sx={{ height: 50, pt: 1}} src="../public/loggaUF.png" alt="Logo" />
-        </Toolbar>
-      </AppBar>
-
-      {/* DRAWER MENYN */}
+          {/* DRAWER MENYN */}
       <Drawer
         anchor="left"
         open={open}
@@ -84,6 +89,68 @@ export default function NavBar() {
       >
         {drawer}
       </Drawer>
+      
+        {/* Bild för loga (klickbar till startsidan) */}
+        <Box component={Link} to="/" aria-label="Gå till startsidan" sx={{ display: "inline-flex" }}>
+          <Box component='img' sx={{ height: 50, pt: 1, mt: "5px", mr: 1 }} src="/loggaUF.png" alt="Moveable UF logotyp" />
+        </Box>
+        </Stack>
+      </Box>
+
+
+      {/* Visas på störe skärm */}
+      <Box sx={{ display: { xs: "none", sm: "block" }, width: "100%" }}>
+        <Stack direction={"row"} sx={{ alignItems: "center", justifyContent: "space-between", px: 2 }}>
+          <Box component={Link} to="/" aria-label="Gå till startsidan" sx={{ display: "inline-flex" }}>
+            <Box component='img' sx={{ height: 60, pt: 1, mt: "5px", cursor: "pointer" }} src="/loggaUF.png" alt="Moveable UF logotyp" />
+          </Box>
+
+          {/* Center area: takes remaining space and centers buttons within it */}
+          <Box sx={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", gap: 1, whiteSpace: "nowrap", overflowX: "auto" }}>
+
+            {menuItems
+              .filter((item) => item.path !== "/contact")
+              .map((item) => {
+                const isActive = item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path);
+                return (
+                  <Button
+                    key={item.text}
+                    component={Link}
+                    to={item.path}
+                    sx={{ textAlign: "center", fontWeight: 700, py: 1.5, px: 2, mx: 0.5, minWidth: "auto", whiteSpace: "nowrap", borderBottom: isActive ? "3px solid black" : "3px solid transparent", borderRadius: 0 }}
+                    color="none"
+                  >
+                    {item.text}
+                  </Button>
+                );
+              })}
+
+          </Box>
+
+          {/* Right-aligned contact button (independent width) */}
+          <Box sx={{ display: "flex", alignItems: "center", ml: 2 }}>
+            {(() => {
+              const contact = menuItems.find((i) => i.path === "/contact");
+              const isActive = contact.path === "/" ? location.pathname === "/" : location.pathname.startsWith(contact.path);
+              return (
+                <Button
+                  key={contact.text}
+                  component={Link}
+                  to={contact.path}
+                  sx={{ textAlign: "center", fontWeight: 700, py: 1.5, px: 2, ml: 1, whiteSpace: "nowrap", borderBottom: isActive ? "3px solid black" : "3px solid transparent", borderRadius: 0, minWidth: "auto" }}
+                  color="none"
+                >
+                  {contact.text}
+                </Button>
+              );
+            })()}
+          </Box>
+
+        </Stack>
+      </Box>
+        </Toolbar>
+      </AppBar>
+
     </Box>
   );
 }
