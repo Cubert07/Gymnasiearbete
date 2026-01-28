@@ -6,7 +6,7 @@ import Product from '../components/product';
 export default function Shop() {
     return (
         <>
-        <Box sx={{ textAlign: "center", backgroundColor: "#f5f5f5" , p: 1, pt: "10vh" }}>
+        <Box sx={{ textAlign: "center" , p: 1, pt: "10vh" }}>
             <Typography variant="h3" sx={{ fontWeight: 'bold', pb: 1 }}>
             Våra produkter
             </Typography>
@@ -18,7 +18,6 @@ export default function Shop() {
             sx={{
                  textAlign: "center", 
                  p: 2,
-                 backgroundColor: "#f5f5f5",
                  display: "grid",
                  gridTemplateColumns: { 
                     xs: "1fr",

@@ -95,7 +95,7 @@ export default function Home() {
                     return topProducts.map((product) => {
                         const originalIndex = Data.findIndex((p) => p.id === product.id);
                         return (
-                            <Card key={product.id} sx={{ p: 2, boxShadow: 3, borderRadius: 2, backgroundColor: "#fff" }}>
+                            <Card key={product.id} sx={{ p: 2, boxShadow: 3, borderRadius: 2 }}>
                                 <Box sx={{ m: '10px', p: '20px', pt: '5px' }}>
                                     <Stack direction="row" justifyContent="space-between" alignItems="center">
                                         <Typography variant='h4' sx={{ fontWeight: 'bold' }}>{product.title}</Typography>

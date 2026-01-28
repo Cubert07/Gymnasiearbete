@@ -51,7 +51,7 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ background: "#f5f5f5", color: "black" }}>
+      <AppBar>
         <Toolbar sx={{ px: { xs: 3, sm: 3 }, py: { xs: 0, sm: 0} }}>
 
       {/* Visas på mindre skärm */}
