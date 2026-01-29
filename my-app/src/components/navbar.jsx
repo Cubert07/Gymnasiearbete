@@ -61,11 +61,11 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ bgcolor: "background.default", color: "black" }}>
+      <AppBar>
         <Toolbar sx={{ px: { xs: 3, sm: 3 }, py: { xs: 0, sm: 0} }}>
 
       {/* Visas på mindre skärm */}
-        <Box  sx={{ display: { xs: "block", sm: "none" }, width: "100%" }}>
+        <Box  sx={{ display: { xs: "block", md: "none" }, width: "100%" }}>
 
         <Stack direction={"row"} sx={{ width: "100%", justifyContent: "space-between", alignItems: "center" }}>
 
@@ -95,7 +95,7 @@ export default function NavBar() {
 
 
       {/* Visas på störe skärm */}
-      <Box sx={{ display: { xs: "none", sm: "block" }, width: "100%", p: 0 }}>
+      <Box sx={{ display: { xs: "none", md: "block" }, width: "100%" }}>
         <Stack direction={"row"} sx={{ alignItems: "center", justifyContent: "space-between", px: 2 }}>
           <Box component={Link} to="/" aria-label="Gå till startsidan" sx={{ display: "inline-flex" }}>
             <Box component='img' sx={{ height: 60, pt: 1, mt: "5px", cursor: "pointer" }} src="/loggaUF.png" alt="Moveable UF logotyp" />
