@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { CartProvider } from './components/cartContext.jsx'
 
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 
@@ -21,7 +22,7 @@ palette: {
       contrastText: '#ffffff',
     },
     background: {
-      default: '#ffffff',
+      default: '#e3f2fd',
       paper: '#fffbed',
     },
   },
@@ -39,7 +40,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
     <CssBaseline />
-    <App />
+    <CartProvider>
+      <App />
+    </CartProvider>
     </ThemeProvider>
   </StrictMode>,
 )

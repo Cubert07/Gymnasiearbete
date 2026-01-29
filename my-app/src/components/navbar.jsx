@@ -1,16 +1,19 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button, Collapse, Card } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 
 export default function NavBar() {
-  const [open, setOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [cartOpen, setCartOpen] = React.useState(false);
+
   const location = useLocation();
 
   const handleToggle = () => {
-    setOpen(!open);
+    setDrawerOpen(!drawerOpen);
   };
 
   const menuItems = [
@@ -19,6 +22,13 @@ export default function NavBar() {
     { text: "Om oss", path: "/about" },
     { text: "Kontakta oss", path: "/contact" },
   ];
+
+  const [cart, setCart] = React.useState([]);
+
+  React.useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart") || "[]"));
+  }, []);
+
 
   const drawer = (
     <Box onClick={handleToggle} sx={{ textAlign: "center" }}>
@@ -51,7 +61,7 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ background: "#f5f5f5", color: "black" }}>
+      <AppBar sx={{ bgcolor: "background.default", color: "black" }}>
         <Toolbar sx={{ px: { xs: 3, sm: 3 }, py: { xs: 0, sm: 0} }}>
 
       {/* Visas på mindre skärm */}
@@ -67,7 +77,7 @@ export default function NavBar() {
           {/* DRAWER MENYN */}
       <Drawer
         anchor="left"
-        open={open}
+        open={drawerOpen}
         onClose={handleToggle}
         sx={{
           "& .MuiDrawer-paper": { width: { xs: "100%", sm: drawerWidth }, boxSizing: "border-box" }
@@ -85,7 +95,7 @@ export default function NavBar() {
 
 
       {/* Visas på störe skärm */}
-      <Box sx={{ display: { xs: "none", sm: "block" }, width: "100%" }}>
+      <Box sx={{ display: { xs: "none", sm: "block" }, width: "100%", p: 0 }}>
         <Stack direction={"row"} sx={{ alignItems: "center", justifyContent: "space-between", px: 2 }}>
           <Box component={Link} to="/" aria-label="Gå till startsidan" sx={{ display: "inline-flex" }}>
             <Box component='img' sx={{ height: 60, pt: 1, mt: "5px", cursor: "pointer" }} src="/loggaUF.png" alt="Moveable UF logotyp" />
@@ -131,7 +141,22 @@ export default function NavBar() {
               );
             })()}
           </Box>
-
+            <Button color="inherit" onClick={() => setCartOpen(!cartOpen)}>
+              <ShoppingBasketIcon />
+            </Button>
+            <Collapse in={cartOpen}>
+              <Box sx={{ position: 'absolute', top: 64, right: 16, width: 300, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, zIndex: 1300 }}>
+                <Card>
+                  <Typography variant="h6" sx={{ p: 2 }}>
+                    {cart.map((item) => (
+                      <div key={item.id}>
+                        {item.title} - {item.quantity} st
+                      </div>
+                    ))}
+                  </Typography>
+                </Card>
+              </Box>
+            </Collapse>
         </Stack>
       </Box>
         </Toolbar>

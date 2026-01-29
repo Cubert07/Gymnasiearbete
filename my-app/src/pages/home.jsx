@@ -8,7 +8,7 @@ export default function Home() {
         <>
         <Box>
             {/* Page container */}
-            <Box sx={{ backgroundImage: "url('https://placehold.co/1920x500')", height: '500px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
+            <Box sx={{ backgroundImage: "url('image0.jpeg')", height: '500px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
                 }}>
 
                     {/* Hero section */}
