@@ -17,29 +17,22 @@ import {
     Paper,
 } from '@mui/material';
 import React from 'react';
-
+import { useCart } from '../components/cartContext.jsx';
 export default function ProductPage() {
     const { index } = useParams();
     const product = Data[parseInt(index)];
     const [quantity, setQuantity] = React.useState(1);
     const [snack, setSnack] = React.useState({ open: false, severity: 'success', message: '' });
+    const { addToCart } = useCart();
 
         if (!product) {
                 return <h1>Product not found</h1>;
         }
 
-        const handleAddToCart = () => {
-            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-            const existing = cart.find((c) => c.id === product.id);
-            if (existing) {
-                existing.quantity += quantity;
-            } else {
-                cart.push({ id: product.id, title: product.title, price: product.price, quantity });
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            setSnack({ open: true, severity: 'success', message: 'Produkten lades till i varukorgen' });
+        const handleAdd = () => {
+            addToCart(product, quantity);
+            setSnack({ open: true, severity: "success", message: "Tillagd i varukorgen!" });
         };
-
         // Related products: show top 4 by popularity excluding current product
         const related = Data
             .filter((p) => p.id !== product.id)
@@ -68,8 +61,8 @@ export default function ProductPage() {
                         <Typography variant="body1" paragraph>{product.description}</Typography>
 
                         <Stack direction="row" spacing={2} alignItems="center" sx={{ mt: 2 }}>
-                            <TextField label="Antal" type="number" inputProps={{ min: 1 }} value={quantity} onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value || '1')))} sx={{ width: 120 }} />
-                            <Button variant="contained" onClick={handleAddToCart}>Lägg till i varukorgen</Button>
+                            <TextField label="Antal" type="number" inputProps={{ min: 1 }} value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} sx={{ width: 120 }} />
+                            <Button variant="contained" onClick={() => handleAdd()}>Lägg till i varukorgen</Button>
                             <Button variant="outlined" component={RouterLink} to="/shop">Fortsätt handla</Button>
                         </Stack>
 
@@ -92,6 +85,12 @@ export default function ProductPage() {
                                         sx={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'stretch', height: '100%' }}
                                     >
                                         <Box component="img" src={p.image} alt={p.altText || p.title} sx={{ width: '100%', height: 160, objectFit: 'cover', flexShrink: 0 }} />
+                                        {/*<CardMedia
+                                          sx={{ height: 140 }}
+                                          image={p.image}
+                                          title="green iguana"
+                                        />
+                                        */}
                                         <Box sx={{ p: 2, flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                             <Typography variant="subtitle1">{p.title}</Typography>
                                             <Typography variant="body2" color="text.secondary">{p.price} kr</Typography>
