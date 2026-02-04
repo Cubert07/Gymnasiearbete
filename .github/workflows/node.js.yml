@@ -26,11 +26,12 @@ jobs:
         run: npm run build
 
       - name: Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        uses: appleboy/scp-action@v0.1.7
         with:
-          protocol: sftp
-          server: ${{ secrets.SFTP_SERVER }}
+          host: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local-dir: dist/
-          server-dir: public_html/
+          source: "dist/*"
+          target: "/public_html"
+          strip_components: 1
+
