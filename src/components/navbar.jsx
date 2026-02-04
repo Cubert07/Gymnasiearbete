@@ -1,14 +1,16 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button, Collapse, Card } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button, Collapse, Card, CardActionArea, Badge} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link, useLocation } from "react-router-dom";
+import { useCart } from "./cartContext.jsx";
 
 const drawerWidth = 240;
 
 export default function NavBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
+  
 
   const location = useLocation();
 
@@ -23,11 +25,14 @@ export default function NavBar() {
     { text: "Kontakta oss", path: "/contact" },
   ];
 
-  const [cart, setCart] = React.useState([]);
+  const { cart, clearCart } = useCart();
 
-  React.useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart") || "[]"));
-  }, []);
+  function handleCartOpen() {
+    setCartOpen(!cartOpen);
+  }
+
+
+
 
 
   const drawer = (
@@ -141,9 +146,12 @@ export default function NavBar() {
               );
             })()}
           </Box>
-            <Button color="inherit" onClick={() => setCartOpen(!cartOpen)}>
-              <ShoppingBasketIcon />
-            </Button>
+            <IconButton onClick={handleCartOpen}>
+              <Badge badgeContent={cart.reduce((total, item) => total + item.quantity, 0)} color="secondary">
+                <ShoppingBasketIcon />
+              </Badge>
+            </IconButton>
+
             <Collapse in={cartOpen}>
               <Box sx={{ position: 'absolute', top: 64, right: 16, width: 300, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, zIndex: 1300 }}>
                 <Card>
@@ -154,6 +162,9 @@ export default function NavBar() {
                       </div>
                     ))}
                   </Typography>
+                  <CardActionArea>
+                    <Button fullWidth onClick={clearCart}>Rensa varukorg</Button>
+                  </CardActionArea>
                 </Card>
               </Box>
             </Collapse>
