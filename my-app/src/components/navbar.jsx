@@ -1,9 +1,10 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button, Collapse, Card, CardActionArea, Badge} from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button, Collapse, Card, CardActionArea, Badge, CardMedia, CardContent, ClickAwayListener, Slide} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "./cartContext.jsx";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const drawerWidth = 240;
 
@@ -13,6 +14,8 @@ export default function NavBar() {
   
 
   const location = useLocation();
+
+  
 
   const handleToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -25,16 +28,11 @@ export default function NavBar() {
     { text: "Kontakta oss", path: "/contact" },
   ];
 
-  const { cart, clearCart } = useCart();
+  const { cart, clearCart, handleRemoveItem } = useCart();
 
   function handleCartOpen() {
     setCartOpen(!cartOpen);
   }
-
-
-
-
-
   const drawer = (
     <Box onClick={handleToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -146,28 +144,50 @@ export default function NavBar() {
               );
             })()}
           </Box>
-            <IconButton onClick={handleCartOpen}>
-              <Badge badgeContent={cart.reduce((total, item) => total + item.quantity, 0)} color="secondary">
-                <ShoppingBasketIcon />
-              </Badge>
-            </IconButton>
+            <ClickAwayListener onClickAway={() => setCartOpen(false)}>
+              <Box>
+                <IconButton onClick={handleCartOpen}>
+                  <Badge badgeContent={cart.reduce((total, item) => total + item.quantity, 0)} color="secondary">
+                    <ShoppingBasketIcon />
+                  </Badge>
+                </IconButton>
+                
+                <Slide direction="left" in={cartOpen} mountOnEnter unmountOnExit>
+                  <Box sx={{ position: 'absolute', top: 64, right: 16, width: 300, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, zIndex: 1300 }}>
+                    <Card>
+                        {cart.map((item) => (
+                          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center'}} key={item.id}>
+                            <CardMedia 
+                              component="img"
+                              height="40"
+                              sx={{ width: 40, objectFit: 'cover', m: 1 }}
+                              image={item.image} 
+                              />
+                            <CardContent>
+                            <Typography variant="h6" sx={{ p: 2 }} key={item.id}>
+                              {item.title} - {item.quantity} st
+                            </Typography>
+                            </CardContent>
 
-            <Collapse in={cartOpen}>
-              <Box sx={{ position: 'absolute', top: 64, right: 16, width: 300, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, zIndex: 1300 }}>
-                <Card>
-                  <Typography variant="h6" sx={{ p: 2 }}>
-                    {cart.map((item) => (
-                      <div key={item.id}>
-                        {item.title} - {item.quantity} st
-                      </div>
-                    ))}
-                  </Typography>
-                  <CardActionArea>
-                    <Button fullWidth onClick={clearCart}>Rensa varukorg</Button>
-                  </CardActionArea>
-                </Card>
+                              <IconButton onClick={() => handleRemoveItem(item.id)}>
+                                <DeleteIcon/>
+                              </IconButton>
+
+                          </Box>
+                        ))}
+
+                        {cart.length === 0 ? (
+                          <Typography variant="body1" sx={{ p: 2 }}>Varukorgen är tom</Typography>
+                        ) : (
+                          <CardActionArea>
+                          <Button fullWidth onClick={clearCart}>Rensa varukorg</Button>
+                          </CardActionArea>
+                        )}
+                    </Card>
+                  </Box>
+                </Slide>
               </Box>
-            </Collapse>
+            </ClickAwayListener>
         </Stack>
       </Box>
         </Toolbar>
