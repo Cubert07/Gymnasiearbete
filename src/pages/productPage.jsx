@@ -22,28 +22,29 @@ import React from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import SecurityIcon from '@mui/icons-material/Security';
+import { useCart } from '../components/cartContext.jsx';
 
 export default function ProductPage() {
     const { index } = useParams();
     const product = Data[parseInt(index)];
     const [quantity, setQuantity] = React.useState(1);
     const [snack, setSnack] = React.useState({ open: false, severity: 'success', message: '' });
+    const { addToCart } = useCart();
 
     if (!product) {
         return <h1>Product not found</h1>;
     }
 
     const handleAddToCart = () => {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        const existing = cart.find((c) => c.id === product.id);
-        if (existing) {
-            existing.quantity += quantity;
-        } else {
-            cart.push({ id: product.id, title: product.title, price: product.price, quantity });
-        }
-        localStorage.setItem('cart', JSON.stringify(cart));
-        setSnack({ open: true, severity: 'success', message: 'Produkten lades till i varukorgen' });
+      addToCart(product, quantity);
+        
+      setSnack({
+        open: true,
+        severity: "success",
+        message: "Produkten lades till i varukorgen",
+      });
     };
+
 
     const related = Data
         .filter((p) => p.id !== product.id)

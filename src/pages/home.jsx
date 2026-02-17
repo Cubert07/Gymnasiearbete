@@ -8,7 +8,7 @@ export default function Home() {
         <>
         <Box>
             {/* Page container */}
-            <Box sx={{ backgroundImage: "url('image0.jpeg')", height: '500px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
+            <Box sx={{ backgroundImage: "url('Allaproduktel1.jpg')", height: '500px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
                 }}>
 
                     {/* Hero section */}
@@ -18,11 +18,11 @@ export default function Home() {
                     {/* Inside of hero */}
 
                         <Stack direction="column" spacing={0}>
-                            <Typography variant="h1" sx={{pt: '2vh', fontWeight: 'bold'}}>Full kontroll.</Typography>
-                            <Typography variant="h1" sx={{pt: '2vh', fontWeight: 'bold'}}>Högsta trygghet.</Typography>
+                            <Typography variant="h1" sx={{pt: '2vh', fontWeight: 'bold', color: 'white'}}>Full kontroll.</Typography>
+                            <Typography variant="h1" sx={{pt: '2vh', fontWeight: 'bold', color: 'white'}}>Högsta trygghet.</Typography>
                         </Stack>    
 
-                    <Typography variant='h5' sx={{ pt: 3 }}>
+                    <Typography variant='h5' sx={{ pt: 3, color: 'white' }}>
                             Joysticks som ger frihet att röra sig.
                     </Typography>
 
@@ -48,7 +48,7 @@ export default function Home() {
                                     <Button
                                         component={Link}
                                         to="/contact"
-                                        variant="outlined"
+                                        variant="contained"
                                         color="secondary"
                                         sx={{ px: 3, py: 1.2, textTransform: 'none', borderRadius: 2 }}
                                     >
