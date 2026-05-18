@@ -1,8 +1,13 @@
+// Navigationskomponent (AppBar) med responsiv drawer och en inbyggd mini-kundvagn
+// Viktiga delar:
+// - menyobjekt som navigerar via react-router
+// - drawer för mobila skärmar
+// - en liten cart-panel som visar artiklar och tillåter att rensa eller gå till kassan
 import React from "react";
 import { AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider, Stack, Button, Collapse, Card, CardActionArea, Badge, CardMedia, CardContent, ClickAwayListener, Slide} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "./cartContext.jsx";
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -11,9 +16,10 @@ const drawerWidth = 240;
 export default function NavBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
-  
+  const navigate = useNavigate();
 
   const location = useLocation();
+  // `location` används för att markera aktiv menyknapp beroende på URL
 
   
 
@@ -179,9 +185,23 @@ export default function NavBar() {
                         {cart.length === 0 ? (
                           <Typography variant="body1" sx={{ p: 2 }}>Varukorgen är tom</Typography>
                         ) : (
-                          <CardActionArea>
-                          <Button fullWidth onClick={clearCart}>Rensa varukorg</Button>
-                          </CardActionArea>
+                          <Box>
+                            <Button 
+                              fullWidth 
+                              variant="contained" 
+                              color="secondary"
+                              onClick={() => {
+                                navigate('/checkout');
+                                setCartOpen(false);
+                              }}
+                              sx={{ textTransform: 'none', fontWeight: 'bold', m: 1, mb: 0.5 }}
+                            >
+                              Gå till kassa
+                            </Button>
+                            <CardActionArea>
+                              <Button fullWidth onClick={clearCart}>Rensa varukorg</Button>
+                            </CardActionArea>
+                          </Box>
                         )}
                     </Card>
                   </Box>

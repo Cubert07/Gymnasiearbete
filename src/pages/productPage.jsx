@@ -1,3 +1,7 @@
+// Produktsida: visar en enskild produkt baserat på URL-parametern `index`
+// Funktioner:
+// - visar bild, pris, beskrivning och detaljer
+// - låter användaren välja antal och lägga till i kundvagnen via `useCart()`
 import { useParams, Link as RouterLink } from 'react-router-dom';
 import { Data } from '../products/products';
 import {
@@ -26,6 +30,7 @@ import { useCart } from '../components/cartContext.jsx';
 
 export default function ProductPage() {
     const { index } = useParams();
+    // `index` kommer från URL (/product/:index) och används för att hämta rätt produkt
     const product = Data[parseInt(index)];
     const [quantity, setQuantity] = React.useState(1);
     const [snack, setSnack] = React.useState({ open: false, severity: 'success', message: '' });
@@ -36,13 +41,14 @@ export default function ProductPage() {
     }
 
     const handleAddToCart = () => {
-      addToCart(product, quantity);
-        
-      setSnack({
-        open: true,
-        severity: "success",
-        message: "Produkten lades till i varukorgen",
-      });
+            // Lägg produkten i kundvagnen med vald kvantitet
+            addToCart(product, quantity);
+            // Visa en kort notifiering för användaren
+            setSnack({
+                open: true,
+                severity: "success",
+                message: "Produkten lades till i varukorgen",
+            });
     };
 
 

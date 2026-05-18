@@ -1,3 +1,5 @@
+// Startsida: visar hero-sektion och utvalda produkter
+// Använder `Data` från produktfilen för att lista populära produkter
 import { Box, Typography, Grid, Button, Stack, Card, Divider, CardMedia, Chip } from '@mui/material';
 import { Link } from "react-router-dom";
 import { Data } from '../products/products';
@@ -91,6 +93,7 @@ export default function Home() {
                 
                 {(() => {
                     // Show top 3 products by popularity
+                    // Ta en kopia, sortera efter `popularity` och välj de tre första
                     const topProducts = Data.slice().sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 3);
                     return topProducts.map((product) => {
                         const originalIndex = Data.findIndex((p) => p.id === product.id);

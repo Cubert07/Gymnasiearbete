@@ -1,3 +1,5 @@
+// MUI-tema: centraliserade färger, typografi och breakpoint-inställningar
+// Anpassa här för att ändra globala designelement
 import { createTheme,  } from '@mui/material/styles';
 
 const theme = createTheme({

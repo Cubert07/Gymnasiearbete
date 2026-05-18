@@ -1,3 +1,5 @@
+// Produktdata: enkel array med produktobjekt som används i demoappen
+// Fält som används i UI: id, title, price, description, detailedDescription, image, altText, popularity
 export const Data = [
   {
     "id": "1",

@@ -1,3 +1,5 @@
+// Kontaktformulär: enkel klient-side validering och snackbar-feedback
+// TODO: anslut till backend eller e-posttjänst för produktion
 import React from "react";
 import { Container, Grid, Typography, TextField, Button, Paper, Box, Snackbar, Alert } from "@mui/material";
 
@@ -14,13 +16,16 @@ export default function Contact() {
         e.preventDefault();
         // Simple validation
         if (!form.name.trim() || !form.email.includes("@") || !form.message.trim()) {
+            // Visa fel om fälten inte är korrekt ifyllda
             setSnack({ open: true, severity: "error", message: "Fyll i namn, en giltig e-post och meddelande." });
             return;
         }
 
-        // TODO: send form to backend or email service
+        // TODO: skicka formulär till backend eller e-posttjänst
         console.log("Contact form submitted:", form);
+        // Bekräfta för användaren att meddelandet skickats
         setSnack({ open: true, severity: "success", message: "Meddelandet skickades! Vi hör av oss snart." });
+        // Nollställ formuläret
         setForm({ name: "", email: "", message: "" });
     };
 

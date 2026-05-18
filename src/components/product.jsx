@@ -1,3 +1,6 @@
+// Produktlista-komponent: renderar en lista med produktkort.
+// Props:
+// - `items` (valfritt): lista med produkter; använder `Data` som fallback
 import { Box, Typography, Grid, Button, Stack, Card, CardMedia } from '@mui/material';
 import { Data } from "../products/products";
 import ProductPage from '../pages/productPage';
@@ -8,6 +11,7 @@ export default function Product({ items }) {
   return (
     <>
       {list.map((product) => {
+        // Hitta index i den globala `Data`-arrayen för länkar till produktsidan
         const index = Data.findIndex((p) => p.id === product.id);
         return (
 

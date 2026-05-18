@@ -1,3 +1,4 @@
+// Enkel footer-komponent som används på alla sidor
 import React from 'react';
 import { Box } from '@mui/material';
 

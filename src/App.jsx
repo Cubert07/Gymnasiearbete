@@ -1,3 +1,6 @@
+// App-komponenten sätter upp routing och global layout.
+// - Innehåller en `ScrollToTop`-hjälpare som scrollar sidan till toppen vid navigation
+// - Inkluderar `NavBar` och `Footer` som återfinns på alla sidor
 import { Button, Box } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -8,6 +11,7 @@ import Shop from "./pages/shop";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import ProductPage from "./pages/productPage";
+import Checkout from "./pages/checkout";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,6 +36,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:index" element={<ProductPage />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Footer />

@@ -1,3 +1,4 @@
+// Enkel statisk sida med information om företaget
 import react from 'react';
 import { Box, Typography, Card, Grid } from '@mui/material';
 

@@ -1,3 +1,4 @@
+// Butikssida: listar alla produkter med `Product`-komponenten
 import { Box, Typography } from '@mui/material';
 import Product from '../components/product';
 
