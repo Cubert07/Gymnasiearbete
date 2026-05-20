@@ -2,7 +2,7 @@
 // Funktioner:
 // - visar bild, pris, beskrivning och detaljer
 // - låter användaren välja antal och lägga till i kundvagnen via `useCart()`
-import { useParams, Link as RouterLink } from 'react-router-dom';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Data } from '../products/products';
 import {
     Box,
@@ -35,6 +35,7 @@ export default function ProductPage() {
     const [quantity, setQuantity] = React.useState(1);
     const [snack, setSnack] = React.useState({ open: false, severity: 'success', message: '' });
     const { addToCart } = useCart();
+    const navigate = useNavigate();
 
     if (!product) {
         return <h1>Product not found</h1>;
@@ -49,6 +50,11 @@ export default function ProductPage() {
                 severity: "success",
                 message: "Produkten lades till i varukorgen",
             });
+    };
+
+    const handleBuyNow = () => {
+            addToCart(product, quantity);
+            navigate('/checkout');
     };
 
 
@@ -137,7 +143,8 @@ export default function ProductPage() {
                             <Button
                                 variant="contained"
                                 size="large"
-                                >
+                                onClick={handleBuyNow}
+                            >
                                 Köp Nu
                             </Button>
                         </Stack>
