@@ -134,6 +134,12 @@ export default function ProductPage() {
                             >
                                 Lägg till i varukorgen
                             </Button>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                >
+                                Köp Nu
+                            </Button>
                         </Stack>
 
                         <Button
