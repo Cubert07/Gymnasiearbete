@@ -10,12 +10,12 @@ export default function Home() {
         <>
         <Box>
             {/* Page container */}
-            <Box sx={{ backgroundImage: "url('Allaproduktel1.jpg')", height: '500px',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',
+            <Box sx={{ backgroundImage: "url('Allaproduktel1.jpg')", width: '100%', minHeight: { xs: '60vh', sm: '70vh', md: '80vh' }, backgroundSize: 'cover', backgroundPosition: { xs: 'center-top', md: 'center' }, backgroundRepeat: 'no-repeat', display: 'flex', alignItems: 'center'
                 }}>
 
                     {/* Hero section */}
 
-                <Box sx={{ width: '50vw', float: 'left', pl: '5vw', }}>
+                <Box sx={{ width: { xs: '100%', md: '50%' }, px: { xs: 2, sm: 4, md: 8 }, textAlign: { xs: 'center', sm: 'left', md: 'left' } }}>
 
                     {/* Inside of hero */}
 
@@ -102,7 +102,7 @@ export default function Home() {
                                 <Box sx={{ m: '10px', p: '20px', pt: '5px' }}>
                                     <Stack direction="row" justifyContent="space-between" alignItems="center">
                                         <Typography variant='h4' sx={{ fontWeight: 'bold' }}>{product.title}</Typography>
-                                        <Chip label={`Popularitet: ${product.popularity ?? 0}`} size="small" color="secondary" />
+                                       <Chip label={`Popularitet: ${product.popularity ?? 0}`} size="small" color="secondary" />
                                     </Stack>
 
                                     <CardMedia
